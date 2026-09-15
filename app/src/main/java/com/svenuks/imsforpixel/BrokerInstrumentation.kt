@@ -342,9 +342,11 @@ class BrokerInstrumentation : Instrumentation() {
     private fun showImsStatusNotification(isActivate: Boolean) {
         val channelId = "ims_status_channel"
         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as? NotificationManager ?: return
+        val lang = LanguageManager.getSavedLanguage(context)
+        val localizedContext = LanguageManager.applyLocale(context, lang)
         
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val ch = NotificationChannel(channelId, "IMS 激活状态", NotificationManager.IMPORTANCE_HIGH)
+            val ch = NotificationChannel(channelId, localizedContext.getString(R.string.notification_ims_status_channel), NotificationManager.IMPORTANCE_HIGH)
             notificationManager.createNotificationChannel(ch)
         }
         
@@ -353,17 +355,17 @@ class BrokerInstrumentation : Instrumentation() {
         val slot1 = try { java.io.File(context.filesDir, "ims_status_1.txt").readText().trim().toBoolean() } catch (e: Exception) { false }
         val anyRegistered = slot0 || slot1
         val title = if (isActivate) {
-            if (anyRegistered) "✅ VoLTE 激活成功" else "⚠️ VoLTE 激活完成"
+            if (anyRegistered) localizedContext.getString(R.string.notification_activate_success_any) else localizedContext.getString(R.string.notification_activate_success_none)
         } else {
-            "✅ 配置已恢复默认"
+            localizedContext.getString(R.string.notification_restore_success)
         }
         val body = if (isActivate) {
             buildString {
-                if (slot0) append("SIM 1: IMS 已注册  ") else append("SIM 1: IMS 未注册  ")
-                if (slot1) append("SIM 2: IMS 已注册") else append("SIM 2: IMS 未注册")
+                if (slot0) append(localizedContext.getString(R.string.notification_sim_1_registered) + "  ") else append(localizedContext.getString(R.string.notification_sim_1_unregistered) + "  ")
+                if (slot1) append(localizedContext.getString(R.string.notification_sim_2_registered)) else append(localizedContext.getString(R.string.notification_sim_2_unregistered))
             }
         } else {
-            "运营商覆盖配置已清除，请测试通话功能是否正常"
+            localizedContext.getString(R.string.notification_restore_body)
         }
         
         val builder = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
