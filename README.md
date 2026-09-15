@@ -5,7 +5,7 @@
 [![Platform](https://img.shields.io/badge/platform-Android%2010--17-brightgreen)](https://developer.android.com)
 [![API](https://img.shields.io/badge/minSdk-28-blue)](https://developer.android.com/about/versions/10)
 [![License](https://img.shields.io/badge/license-MIT-orange)](LICENSE)
-[![Version](https://img.shields.io/badge/version-1.0.0-informational)](app/build.gradle)
+[![Version](https://img.shields.io/badge/version-1.1.0-informational)](app/build.gradle)
 [![Tested](https://img.shields.io/badge/tested-Android%2017-success)](https://developer.android.com)
 
 ---
@@ -39,8 +39,10 @@ By merging these two ideas, **IMS for Pixel** is simpler and more convenient tha
 
 - ✅ **VoLTE** — Enable HD voice calls over LTE
 - ✅ **VoNR** — Enable 5G calling (Voice over New Radio)
+- ✅ **Video Calling (VT / ViLTE / ViNR)** — Carrier video calling over LTE and 5G
 - ✅ **Wi-Fi Calling (VoWiFi)** — Make calls over Wi-Fi
 - ✅ **Wi-Fi Calling Roaming** — Keep Wi-Fi calling active while abroad
+- ✅ **Multi-Language Support** — English, Simplified Chinese, and in-app language switcher
 - ✅ **Supplementary Services (UT)** — Call forwarding, call waiting, etc.
 - ✅ **Dual-SIM support** — Independent per-slot configuration
 - ✅ **One-tap restore** — Clear all overrides and return to carrier defaults
