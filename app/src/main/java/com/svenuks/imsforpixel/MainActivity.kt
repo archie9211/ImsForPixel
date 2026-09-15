@@ -17,6 +17,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -563,9 +564,10 @@ fun MainScreen(recheckSignal: MutableState<Long> = remember { mutableStateOf(Sys
                     actions = {
                         IconButton(onClick = { showLanguageDialog = true }) {
                             Icon(
-                                Icons.Default.Language,
+                                painter = painterResource(R.drawable.ic_language),
                                 contentDescription = stringResource(R.string.action_language),
-                                tint = TextLight
+                                tint = TextLight,
+                                modifier = Modifier.size(22.dp)
                             )
                         }
                     },
