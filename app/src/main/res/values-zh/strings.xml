@@ -39,6 +39,8 @@
     <string name="toggle_volte_desc">允许通过 4G/LTE 网络进行语音通话</string>
     <string name="toggle_vonr_title">启用 5G 通话 (VoNR)</string>
     <string name="toggle_vonr_desc">启用 5G 独立组网语音通话支持 (VoNR)</string>
+    <string name="toggle_vt_title">启用视频通话 (VT / ViLTE / ViNR)</string>
+    <string name="toggle_vt_desc">允许通过 4G/LTE 和 5G 网络进行运营商视频通话</string>
     <string name="toggle_vowifi_title">启用 Wi-Fi 通话 (VoWiFi)</string>
     <string name="toggle_vowifi_desc">信号不佳时允许通过 Wi-Fi 进行通话</string>
     <string name="toggle_wfc_roaming_title">启用 Wi-Fi 通话漫游</string>

@@ -39,6 +39,8 @@
     <string name="toggle_volte_desc">Allow voice calls over 4G/LTE networks</string>
     <string name="toggle_vonr_title">Enable 5G Calling (VoNR)</string>
     <string name="toggle_vonr_desc">Enable Voice over New Radio (VoNR)</string>
+    <string name="toggle_vt_title">Enable Video Calling (VT / ViLTE / ViNR)</string>
+    <string name="toggle_vt_desc">Allow carrier video calls over 4G/LTE and 5G networks</string>
     <string name="toggle_vowifi_title">Enable Wi-Fi Calling (VoWiFi)</string>
     <string name="toggle_vowifi_desc">Allow voice calls over Wi-Fi when signal is poor</string>
     <string name="toggle_wfc_roaming_title">Enable Wi-Fi Calling Roaming</string>

@@ -225,6 +225,7 @@ class BrokerInstrumentation : Instrumentation() {
             } else {
                 val volte = sharedPrefs.getBoolean("volte_slot_$slotIndex", true)
                 val vonr = sharedPrefs.getBoolean("vonr_slot_$slotIndex", true)
+                val vt = sharedPrefs.getBoolean("vt_slot_$slotIndex", true)
                 val vowifi = sharedPrefs.getBoolean("vowifi_slot_$slotIndex", true)
                 val crossSim = sharedPrefs.getBoolean("cross_sim_slot_$slotIndex", false)
                 val wfcRoaming = sharedPrefs.getBoolean("wfc_roaming_slot_$slotIndex", true)
@@ -243,6 +244,15 @@ class BrokerInstrumentation : Instrumentation() {
                 // VoNR (5G Calling) overrides
                 bundle.putBoolean("vonr_enabled_bool", vonr)
                 bundle.putBoolean("vonr_setting_visibility_bool", vonr)
+
+                // Video Calling (VT / ViLTE / ViNR) overrides
+                bundle.putBoolean("carrier_vt_available_bool", vt)
+                if (vt) {
+                    bundle.putBoolean("ignore_data_enabled_changed_for_video_calls", true)
+                    bundle.putBoolean("allow_video_calling_fallback_bool", true)
+                    bundle.putBoolean("support_pause_ims_video_calls_bool", true)
+                    bundle.putIntArray("ims.capability_type_video_int_array", intArrayOf(0, 1, 3))
+                }
 
                 // VoWiFi (Wi-Fi Calling) overrides
                 bundle.putBoolean("carrier_wfc_ims_available_bool", vowifi)

@@ -143,6 +143,7 @@ class MainActivity : ComponentActivity() {
             for (slot in 0..1) {
                 editor.putBoolean("volte_slot_$slot", true)
                 editor.putBoolean("vonr_slot_$slot", true)
+                editor.putBoolean("vt_slot_$slot", true)
                 editor.putBoolean("vowifi_slot_$slot", true)
                 editor.putBoolean("cross_sim_slot_$slot", false) // Hidden and default false
                 editor.putBoolean("wfc_roaming_slot_$slot", true)
@@ -494,6 +495,8 @@ fun MainScreen(recheckSignal: MutableState<Long> = remember { mutableStateOf(Sys
                 .putBoolean("volte_slot_1", true)
                 .putBoolean("vonr_slot_0", true)
                 .putBoolean("vonr_slot_1", true)
+                .putBoolean("vt_slot_0", true)
+                .putBoolean("vt_slot_1", true)
                 .putBoolean("vowifi_slot_0", true)
                 .putBoolean("vowifi_slot_1", true)
                 .putBoolean("wfc_roaming_slot_0", true)
@@ -684,6 +687,7 @@ fun ConfigPanel(
 
     var voLteEnabled by remember(slotIndex) { mutableStateOf(prefs.getBoolean("volte_slot_$slotIndex", true)) }
     var voNrEnabled by remember(slotIndex) { mutableStateOf(prefs.getBoolean("vonr_slot_$slotIndex", true)) }
+    var vtEnabled by remember(slotIndex) { mutableStateOf(prefs.getBoolean("vt_slot_$slotIndex", true)) }
     var voWifiEnabled by remember(slotIndex) { mutableStateOf(prefs.getBoolean("vowifi_slot_$slotIndex", true)) }
     var crossSimEnabled by remember(slotIndex) { mutableStateOf(prefs.getBoolean("cross_sim_slot_$slotIndex", false)) } // Default false
     var wfcRoamingEnabled by remember(slotIndex) { mutableStateOf(prefs.getBoolean("wfc_roaming_slot_$slotIndex", true)) }
@@ -781,6 +785,11 @@ fun ConfigPanel(
             ToggleRow(stringResource(R.string.toggle_vonr_title), stringResource(R.string.toggle_vonr_desc), voNrEnabled) { 
                 voNrEnabled = it
                 prefs.edit().putBoolean("vonr_slot_$slotIndex", it).putBoolean("clear_slot_$slotIndex", false).commit()
+                onConfigChanged()
+            }
+            ToggleRow(stringResource(R.string.toggle_vt_title), stringResource(R.string.toggle_vt_desc), vtEnabled) { 
+                vtEnabled = it
+                prefs.edit().putBoolean("vt_slot_$slotIndex", it).putBoolean("clear_slot_$slotIndex", false).commit()
                 onConfigChanged()
             }
             ToggleRow(stringResource(R.string.toggle_vowifi_title), stringResource(R.string.toggle_vowifi_desc), voWifiEnabled) { 
